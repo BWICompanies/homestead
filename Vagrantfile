@@ -50,4 +50,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.hostmanager.manage_host = true
         config.hostmanager.aliases = settings['sites'].map { |site| site['map'] }
     end
+	
+	if Vagrant.has_plugin?('vagrant-disksize')
+			config.vm.box = 'laravel/homestead'
+			config.disksize.size = '80GB'
+	end
 end
